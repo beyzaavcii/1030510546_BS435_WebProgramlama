@@ -1,1 +1,5 @@
-# 1030510546_BS435_WebProgramlama
+Öğrenci Numarası: 1030510546
+
+Öğrenci Adı: Ömür Şahin
+
+Ders Adı: BS435 Web Programlama
