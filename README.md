@@ -1,5 +1,5 @@
 Öğrenci Numarası: 1030510546
 
-Öğrenci Adı: Ömür Şahin
+Öğrenci Adı: Beyza Avcı
 
 Ders Adı: BS435 Web Programlama
