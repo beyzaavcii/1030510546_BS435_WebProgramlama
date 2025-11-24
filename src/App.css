@@ -15,3 +15,33 @@ body {
     border-radius: 8px;
     background-color: #ffffff;
 }
+
+/* Görselleri yan yana dizen kapsayıcı (Flexbox) */
+.gorsel-alani {
+    display: flex;
+    justify-content: center; /* Ortala */
+    gap: 20px; /* Görseller arası boşluk */
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Mobilde alt satıra geçsin */
+}
+
+.gorsel-kapsayici {
+    cursor: pointer; /* Tıklanabilir el işareti çıksın */
+    transition: transform 0.2s; /* Hafif animasyon */
+    border: 4px solid transparent; /* Çerçeve payı */
+    border-radius: 12px;
+}
+
+.gorsel-kapsayici:hover {
+    transform: scale(1.05); /* Üzerine gelince biraz büyüsün */
+    /*border-color: #007bff; /* Üzerine gelince mavi çerçeve */
+}
+
+/* Resmin kendisi */
+.gorsel-resim {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
