@@ -1,22 +1,59 @@
 import { Gorsel } from './Gorsel';
-export const OyunEkrani = () => {
+import { useState } from 'react';
 
-    // Şimdilik test amaçlı rastgele resim linkleri
-    const resim1 = "https://placehold.co/200x200/FF5733/FFFFFF?text=Resim+1";
-    const resim2 = "https://placehold.co/200x200/33FF57/FFFFFF?text=AI+Resmi";
-    const resim3 = "https://placehold.co/200x200/3357FF/FFFFFF?text=Resim+2";
+const OYUN_VERISI = [
+    {
+        id: 1,
+        url: "https://placehold.co/300x300/FF5733/FFFFFF?text=Gercek+1",
+        isAi: false
+    },
+    {
+        id: 2,
+        url: "https://placehold.co/300x300/33FF57/FFFFFF?text=AI+Uretimi",
+        isAi: true
+    },
+    {
+        id: 3,
+        url: "https://placehold.co/300x300/3357FF/FFFFFF?text=Gercek+2",
+        isAi: false
+    }
+];
+
+export const OyunEkrani = () => {
+    // Hangi görselin seçildiğini takip eden State
+    const [secilenId, setSecilenId] = useState<number | null>(null);
+
+    // Görsele tıklanınca çalışacak fonksiyon
+    const gorselSec = (id: number) => {
+        setSecilenId(id);
+        console.log("Seçilen ID:", id);
+    };
 
     return (
         <div className="oyun-ekrani">
             <h2>Tahminini Yap!</h2>
-            <p>Görsellerden biri yapay zeka ürünü. Sence hangisi?</p>
+            <p>Buradaki görsellerden biri yapay zeka ürünü. Sence hangisi?</p>
 
-            {/* Görsellerin yan yana duracağı alan */}
             <div className="gorsel-alani">
-                <Gorsel imageUrl={resim1} onClick={() => console.log("1. Resim seçildi")} />
-                <Gorsel imageUrl={resim2} onClick={() => console.log("2. Resim seçildi")} />
-                <Gorsel imageUrl={resim3} onClick={() => console.log("3. Resim seçildi")} />
+                {/* Burada 'map' fonksiyonu kullanıyoruz.
+            Yani 3 kere elle gorsel yazmak yerine, listeyi döngüye sokuyoruz.
+        */}
+                {OYUN_VERISI.map((gorsel) => (
+                    <Gorsel
+                        key={gorsel.id}
+                        imageUrl={gorsel.url}
+                        isSelected={secilenId === gorsel.id} // Eğer tıklanan ID bu ise çerçeve yak
+                        onClick={() => gorselSec(gorsel.id)}
+                    />
+                ))}
             </div>
+
+            {/* Seçim yapıldıysa altta yazsın */}
+            {secilenId !== null && (
+                <div style={{ marginTop: '20px', color: '#333' }}>
+                    Seçilen Görsel ID: <strong>{secilenId}</strong>
+                </div>
+            )}
         </div>
     );
 }

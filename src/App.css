@@ -45,3 +45,9 @@ body {
     border-radius: 8px;
     display: block;
 }
+
+.gorsel-kapsayici.secili {
+    border-color: #2563eb; /* Mavi çerçeve */
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.5); /* Hafif mavi parlama */
+    transform: scale(1.05); /* Seçilince büyük kalsın */
+}
